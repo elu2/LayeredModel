@@ -49,7 +49,8 @@ layer <- seq(1, layers)
 trials <- seq(1, 1000)
 
 
-run_trial <- function(placeholder){
+run_trial <- function(trial){
+  print(paste("Running trial", trial, "."))
   c(final_coefs, oErrs, fnrs, fprs) %<-% layered_model(x, y, xy, alpha1=1, alphai=1, layers)
   
   err_df <- data.frame(oErrs, fnrs,fprs, trial, layer)
@@ -57,6 +58,7 @@ run_trial <- function(placeholder){
   
   write.table(err_df, epath, sep=",", col.names=!file.exists(epath), row.names=F, append=T)
   write.table(df, fpath, sep=",", col.names=!file.exists(fpath), row.names=F, append=T)
+  print(paste("Wrote trial", trial, "."))
 }
 
 print("Running 1000 trials.")
