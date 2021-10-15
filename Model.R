@@ -49,7 +49,7 @@ layer <- seq(1, layers)
 trials <- seq(1, 1000)
 
 
-run_trial <- function(){
+run_trial <- function(placeholder){
   c(final_coefs, oErrs, fnrs, fprs) %<-% layered_model(x, y, xy, alpha1=1, alphai=1, layers)
   
   err_df <- data.frame(oErrs, fnrs,fprs, trial, layer)
